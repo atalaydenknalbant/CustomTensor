@@ -7,7 +7,7 @@ class CustomTensor:
         shape_length = len(self.shape)
         data_length = len(self.data)
 
-        def calculate_tensor_length(s) -> int:
+        def calculate_tensor_length(s: list) -> int:
             r = 1
             for _ in s:
                 r *= _
@@ -20,12 +20,12 @@ class CustomTensor:
             for i in range(data_length - tensor_length):
                 self.data.pop(-1)
 
-        def initial_packaging(d, s):
+        def initial_packaging(d: list, s: list) -> list:
             for j in range(tensor_length//s[-1]):
                 tensor.append([d.pop(0) for _ in range((s[-1]))])
             return tensor
 
-        def recursive_packaging(t, s, length):
+        def recursive_packaging(t: list, s: list, length: int) -> list:
             if length == 0:
                 return t
             else:
@@ -34,7 +34,7 @@ class CustomTensor:
                     temp.append([t.pop(0) for _ in range((s[length]))])
                 return recursive_packaging(temp, s, length-1)
 
-        def build():
+        def build() -> list:
             if shape_length == 1:
                 return initial_packaging(self.data, self.shape)
             if shape_length == 0:
