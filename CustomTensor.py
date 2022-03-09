@@ -36,10 +36,10 @@ class CustomTensor:
 
         self.end_product = build()
 
-    def __str__(self):
+    def __str__(self) -> str:
         return str(self.end_product)
 
-    def as_list(self):
+    def as_list(self) -> list:
         return self.end_product
 
 
